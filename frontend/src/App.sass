@@ -1,0 +1,55 @@
+.App
+  width: 100%
+  max-height: 100vh
+  box-sizing: border-box
+  header
+    box-sizing: border-box
+    width: 100%
+    padding: 20px
+    border-bottom: 1px solid #e5e5e5
+    display: flex
+    align-items: center
+    .word
+      margin-left: calc( 50% - 300px )
+      transform: translateX( -50% )
+      font-size: 2rem
+      font-family: Fraunces, serif
+      font-style: italic
+      .accented
+        color: #ff0000
+      span:hover
+        cursor: pointer
+  main
+    box-sizing: border-box
+    width: 100%
+    height: calc( 100vh - 90px )
+    padding: 20px
+    display: grid
+    grid-template-columns: 720px 360px
+    overflow-y: auto
+    .rhymes
+      padding: 20px 60px
+      overflow-y: auto
+      border-right: 1px solid #e5e5e5
+      .section
+        padding-bottom: 20px
+        h3
+          font-family: Fraunces, serif
+          font-weight: 500
+          font-size: 1rem
+        .word
+          font-size: 1.1rem
+          line-height: 1.5
+          font-family: Fraunces, serif
+          font-weight: 300
+          &:hover
+            cursor: pointer
+          .marked
+            color: #ff0000
+@media (max-width: 800px)
+  header
+    justify-content: space-between
+    &.word
+      margin-left: 0
+    main .rhymes
+      padding: 0px
