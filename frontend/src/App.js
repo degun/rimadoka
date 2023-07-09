@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
 
 import { HOST, vowels, accentedVowels } from "./constants";
@@ -61,9 +62,16 @@ function App() {
   const asonances = rhymes.filter(({ type }) => type === "a");
   const consonances = rhymes.filter(({ type }) => type === "c");
 
+  const myTheme = createTheme({
+    palette:{
+      mode: 'dark',
+    }
+});
+
   return (
     <div className="App">
       <header className="header">
+      <ThemeProvider theme={myTheme}>
         <Autocomplete
           value={search}
           onInputChange={(_,val) => setSearch(val)}
@@ -82,6 +90,7 @@ function App() {
             <TextField {...params} label="Kërko fjalë" />
           )}
         />
+        </ThemeProvider>
         <div className="word">
           {word && [...word].map((letter, index) => <span key={`letter-${index}`} className={index === accentIndex ? "accented" : undefined} onClick={() => calculateAccent(letter, index)}>{index === accentIndex ? accentedVowels[vowels.indexOf(letter)] : letter}</span>)}
         </div>
